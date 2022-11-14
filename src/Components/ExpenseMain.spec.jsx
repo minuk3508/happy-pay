@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { RecoilRoot } from "recoil";
 import { groupMemberState } from "../State/groupMember";
@@ -87,6 +87,45 @@ describe("비용 정산 메인페이지", () => {
       expect(descriptionErrorMessage).toHaveAttribute("data-valid", "true");
       expect(payerErrorMessage).toHaveAttribute("data-valid", "true");
       expect(amountErrorMessage).toHaveAttribute("data-valid", "true");
+    });
+  });
+  describe("비용 리스트 컴포넌트", () => {
+    test("비용 리스트 컴포넌트가 렌더링 되는가", () => {
+      renderComponent();
+
+      const expenseListComponent = screen.getByTestId("expenseList");
+      expect(expenseListComponent).toBeInTheDocument();
+    });
+
+    describe("새로운 비용이 입력 되었을 때", () => {
+      const addNewExpense = async () => {
+        const {
+          dateInput,
+          expenseDescriptionInput,
+          expenseAmountInput,
+          payerInput,
+          addButton,
+        } = renderComponent();
+        await userEvent.type(dateInput, "2022-11-14");
+        await userEvent.type(expenseDescriptionInput, "장보기");
+        await userEvent.type(expenseAmountInput, "30000");
+        await userEvent.selectOptions(payerInput, "영수");
+        await userEvent.click(addButton);
+      };
+      test("날짜, 내용, 결제자, 금액 데이터가 정산 리스트에 추가 된다", async () => {
+        await addNewExpense();
+        //새로운 비용을 입력
+        const expenseListComponent = screen.getByTestId("expenseList");
+        const dateValue = within(expenseListComponent).getByText("2022-11-14");
+        const descriptionValue =
+          within(expenseListComponent).getByText("장보기");
+        const amountValue = within(expenseListComponent).getByText("30000 원");
+        const payerValue = within(expenseListComponent).getByText("영수");
+        expect(dateValue).toBeInTheDocument();
+        expect(descriptionValue).toBeInTheDocument();
+        expect(amountValue).toBeInTheDocument();
+        expect(payerValue).toBeInTheDocument();
+      });
     });
   });
 });

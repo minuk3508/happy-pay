@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { Container, Form, Row, Button } from "react-bootstrap";
+import { Container, Form, Row, Button, Col } from "react-bootstrap";
 import { useRecoilValue, useSetRecoilState } from "recoil";
+import styled from "styled-components";
 import { expensesState } from "../State/expenses";
 import { groupMemberState } from "../State/groupMember";
 
@@ -45,6 +46,10 @@ export default function AddExpenseForm() {
         payer,
       };
       setExpenses((prev) => [...prev, newExpense]);
+      setDate(today);
+      setDescription("");
+      setAmount(0);
+      setPayer(null);
     }
     setValidated(true);
   };
@@ -63,64 +68,138 @@ export default function AddExpenseForm() {
   };
 
   return (
-    <Form noValidate onSubmit={handleSubmit}>
-      <h3>비용 추가하기</h3>
-
-      <Form.Group>
-        <Form.Control
-          type="date"
-          placeholder="결제한 날짜를 선택해 주세요"
-          value={date}
-          onChange={changeDate}
-        />
-      </Form.Group>
-      <Form.Group>
-        <Form.Control
-          type="text"
-          isValid={isDescription}
-          isInvalid={!isDescription && validated}
-          placeholder="비용에 대한 설명을 입력해 주세요"
-          value={description}
-          onChange={changeDescription}
-        />
-        <Form.Control.Feedback type="invalid" data-valid={isDescription}>
-          비용 내용을 입력해 주셔야 합니다.
-        </Form.Control.Feedback>
-      </Form.Group>
-      <Form.Group>
-        <Form.Control
-          type="number"
-          isValid={isAmount}
-          isInvalid={!isAmount && validated}
-          placeholder="비용은 얼마인가요?"
-          value={amount}
-          onChange={changeAmount}
-        />
-        <Form.Control.Feedback type="invalid" data-valid={isAmount}>
-          금액을 입력해 주셔야 합니다.
-        </Form.Control.Feedback>
-      </Form.Group>
-      <Form.Group>
-        <Form.Select
-          isValid={isPayer}
-          isInvalid={!isPayer && validated}
-          defaultValue=""
-          onChange={changePayer}
-        >
-          <option disabled value="">
-            누가 결제 했나요?
-          </option>
-          {members.map((i) => (
-            <option key={i} value={i}>
-              {i}
-            </option>
-          ))}
-        </Form.Select>
-        <Form.Control.Feedback type="invalid" data-valid={isPayer}>
-          결제자를 선택해 주셔야 합니다.
-        </Form.Control.Feedback>
-      </Form.Group>
-      <Button type="submit">추가하기</Button>
-    </Form>
+    <StyledWrapper>
+      <Form noValidate onSubmit={handleSubmit}>
+        <StlyedTitle>비용 추가하기</StlyedTitle>
+        <Row>
+          <Col xs={12}>
+            <StyledFormGroup>
+              <Form.Control
+                type="date"
+                placeholder="결제한 날짜를 선택해 주세요"
+                value={date}
+                onChange={changeDate}
+              />
+            </StyledFormGroup>
+          </Col>
+        </Row>
+        <Row>
+          <Col xs={12}>
+            <StyledFormGroup>
+              <Form.Control
+                type="text"
+                isValid={isDescription}
+                isInvalid={!isDescription && validated}
+                placeholder="비용에 대한 설명을 입력해 주세요"
+                value={description}
+                onChange={changeDescription}
+              />
+              <Form.Control.Feedback type="invalid" data-valid={isDescription}>
+                비용 내용을 입력해 주셔야 합니다.
+              </Form.Control.Feedback>
+            </StyledFormGroup>
+          </Col>
+        </Row>
+        <Row>
+          <Col xs={12} lg={6}>
+            <StyledFormGroup>
+              <Form.Control
+                type="number"
+                isValid={isAmount}
+                isInvalid={!isAmount && validated}
+                placeholder="비용은 얼마인가요?"
+                value={amount}
+                onChange={changeAmount}
+              />
+              <Form.Control.Feedback type="invalid" data-valid={isAmount}>
+                금액을 입력해 주셔야 합니다.
+              </Form.Control.Feedback>
+            </StyledFormGroup>
+          </Col>
+          <Col xs={12} lg={6}>
+            <StyledFormGroup>
+              <Form.Select
+                isValid={isPayer}
+                isInvalid={!isPayer && validated}
+                defaultValue=""
+                className="form-control"
+                onChange={changePayer}
+              >
+                <option disabled value="">
+                  누가 결제 했나요?
+                </option>
+                {members.map((i) => (
+                  <option key={i} value={i}>
+                    {i}
+                  </option>
+                ))}
+                <option>영수</option>
+              </Form.Select>
+              <Form.Control.Feedback type="invalid" data-valid={isPayer}>
+                결제자를 선택해 주셔야 합니다.
+              </Form.Control.Feedback>
+            </StyledFormGroup>
+          </Col>
+        </Row>
+        <Row>
+          <Col xs={12} className="d-grid gap-2">
+            <StyledSubmitButton>추가하기</StyledSubmitButton>
+          </Col>
+        </Row>
+      </Form>
+    </StyledWrapper>
   );
 }
+const StyledWrapper = styled.div`
+  padding: 50px;
+  background-color: #683ba1;
+  box-shadow: 3px 0px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 15px;
+`;
+
+const StyledFormGroup = styled(Form.Group)`
+  margin-bottom: 15px;
+  input,
+  select {
+    background: #59359a;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 8px;
+    border: none;
+    color: #f8f9fa;
+    height: 45px;
+
+    &:focus {
+      color: #f8f9fa;
+      background: #59359a;
+      filter: brightness(80%);
+    }
+    ::placeholder {
+      color: #f8f9fa;
+    }
+  }
+`;
+
+const StlyedTitle = styled.h3`
+  color: #fffbfb;
+  text-align: center;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 48px;
+  margin-bottom: 15px;
+`;
+
+const StyledSubmitButton = styled(Button).attrs({
+  type: "submit",
+})`
+  height: 60px;
+  padding: 16px 32px;
+  color: #59359a;
+  border: none;
+  border-radius: 8px;
+  background-color: #e2d9f3;
+  margin-top: 10px;
+  :hover {
+    background-color: #e2d9f3;
+    filter: rgba(0, 0, 0, 0.3);
+  }
+`;
