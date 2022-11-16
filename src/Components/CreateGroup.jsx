@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Form } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
+import { ROUTES } from "../Router";
 import { groupNameState } from "../State/groupName";
 import CenteredOverlayForm from "./Shared/CenteredOverlayForm";
 
@@ -8,13 +10,14 @@ export default function CreateGroup() {
   const [validated, setValidated] = useState(false);
   const [validGroupName, setValidGroupName] = useState(false);
   const setGroupName = useSetRecoilState(groupNameState);
-
+  const navigate = useNavigate();
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(event);
+
     const form = event.currentTarget;
     if (form.checkValidity()) {
       setValidGroupName(true);
+      navigate(ROUTES.ADD_MEMBERS);
     } else {
       event.stopPropagation();
       setValidGroupName(false);

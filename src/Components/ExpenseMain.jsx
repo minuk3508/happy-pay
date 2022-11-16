@@ -24,29 +24,38 @@ export default function ExpenseMain() {
 
 const LeftPane = () => {
   return (
-    <Container>
-      <Row>
-        <LogoForm />
-      </Row>
-      <Row>
-        <AddExpenseForm />
-      </Row>
-      <Row>
-        <SettlementSummery />
-      </Row>
-    </Container>
+    <StyledLContainer>
+      <StyledGapRow>
+        <Row>
+          <LogoForm />
+        </Row>
+        <Row>
+          <AddExpenseForm />
+        </Row>
+        <Row>
+          <SettlementSummery />
+        </Row>
+      </StyledGapRow>
+    </StyledLContainer>
   );
 };
+const StyledLContainer = styled(Container)``;
+
+const StyledGapRow = styled(Row)`
+  gap: 5vh;
+  padding-top: 100px;
+  justify-content: center;
+`;
 
 const RightPane = () => {
   const groupName = useRecoilValue(groupNameState);
   return (
-    <StyledContainer>
+    <StyledRightPaneWrapper>
       <Row>
         <StyledGroupName>{groupName || "groupName"}</StyledGroupName>
       </Row>
       <ExpenseTable />
-    </StyledContainer>
+    </StyledRightPaneWrapper>
   );
 };
 
@@ -54,9 +63,9 @@ const StyledGroupName = styled.h2`
   font-weight: 200;
   text-align: center;
   letter-spacing: 10px;
-  margin-bottom: 50px;
+  margin-bottom: 40px;
 `;
 
-const StyledContainer = styled(Container)`
+const StyledRightPaneWrapper = styled(Container)`
   padding: 100px 31px;
 `;

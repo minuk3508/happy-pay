@@ -112,9 +112,11 @@ describe("비용 정산 메인페이지", () => {
         await userEvent.selectOptions(payerInput, "영수");
         await userEvent.click(addButton);
       };
-      test("날짜, 내용, 결제자, 금액 데이터가 정산 리스트에 추가 된다", async () => {
+
+      beforeEach(async () => {
         await addNewExpense();
-        //새로운 비용을 입력
+      });
+      test("날짜, 내용, 결제자, 금액 데이터가 정산 리스트에 추가 된다", () => {
         const expenseListComponent = screen.getByTestId("expenseList");
         const dateValue = within(expenseListComponent).getByText("2022-11-14");
         const descriptionValue =
@@ -127,14 +129,26 @@ describe("비용 정산 메인페이지", () => {
         expect(payerValue).toBeInTheDocument();
       });
 
-      test("정산 결과 또한 업데이트 된다", async () => {
-        await addNewExpense();
-
-        const totalText = screen.getByText(/2명 - 총 30000 원 지출/i);
-        const transactionText = screen.getByText(/영희가 영수에게 15000원/i);
+      test("정산 결과 또한 업데이트 된다", () => {
+        const totalText = screen.getByText(/명이서 총 30000 원 지출/i);
+        const transactionText = screen.getByText(/보내기/i);
 
         expect(totalText).toBeInTheDocument();
         expect(transactionText).toBeInTheDocument();
+      });
+
+      const htmlToOmage = require("html-to-image");
+
+      test("정산 결과를 이미지 파일로 저장할 수 있다", async () => {
+        const spingToPng = jest.spyOn(htmlToOmage, "toPng");
+        const downloadButton = screen.getByTestId("button-download");
+        expect(downloadButton).toBeInTheDocument();
+
+        await userEvent.click(downloadButton);
+        expect(spingToPng).toHaveBeenCalledTimes(1);
+        // afterEach(() => {
+        //   jest.resetAllMocks();
+        // });
       });
     });
   });
@@ -142,7 +156,7 @@ describe("비용 정산 메인페이지", () => {
     test("정산 결과 컴포넌트가 렌더링 되는가", () => {
       renderComponent();
 
-      const component = screen.getByText(/정산은 이렇게/i);
+      const component = screen.getByText(/정산 결과/i);
       expect(component).toBeInTheDocument();
     });
   });

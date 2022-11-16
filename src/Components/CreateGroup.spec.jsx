@@ -1,12 +1,15 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import { BrowserRouter as Router } from "react-router-dom";
 import { RecoilRoot } from "recoil";
 import CreateGroup from "./CreateGroup";
 
 const renderComponent = () => {
   render(
     <RecoilRoot>
-      <CreateGroup />
+      <Router>
+        <CreateGroup />
+      </Router>
     </RecoilRoot>
   );
 

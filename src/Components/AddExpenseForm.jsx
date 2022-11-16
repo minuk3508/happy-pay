@@ -69,10 +69,10 @@ export default function AddExpenseForm() {
 
   return (
     <StyledWrapper>
-      <Form noValidate onSubmit={handleSubmit}>
+      <StyledForm noValidate onSubmit={handleSubmit}>
         <StlyedTitle>비용 추가하기</StlyedTitle>
         <Row>
-          <Col xs={12}>
+          <StyledCol xs={12}>
             <StyledFormGroup>
               <Form.Control
                 type="date"
@@ -81,10 +81,10 @@ export default function AddExpenseForm() {
                 onChange={changeDate}
               />
             </StyledFormGroup>
-          </Col>
+          </StyledCol>
         </Row>
         <Row>
-          <Col xs={12}>
+          <StyledCol xs={12}>
             <StyledFormGroup>
               <Form.Control
                 type="text"
@@ -98,10 +98,10 @@ export default function AddExpenseForm() {
                 비용 내용을 입력해 주셔야 합니다.
               </Form.Control.Feedback>
             </StyledFormGroup>
-          </Col>
+          </StyledCol>
         </Row>
         <Row>
-          <Col xs={12} lg={6}>
+          <StyledCol xs={12} lg={6}>
             <StyledFormGroup>
               <Form.Control
                 type="number"
@@ -115,8 +115,8 @@ export default function AddExpenseForm() {
                 금액을 입력해 주셔야 합니다.
               </Form.Control.Feedback>
             </StyledFormGroup>
-          </Col>
-          <Col xs={12} lg={6}>
+          </StyledCol>
+          <StyledCol xs={12} lg={6}>
             <StyledFormGroup>
               <Form.Select
                 isValid={isPayer}
@@ -133,33 +133,36 @@ export default function AddExpenseForm() {
                     {i}
                   </option>
                 ))}
-                <option>A</option>
-                <option>B</option>
-                <option>C</option>
-                <option>D</option>
               </Form.Select>
               <Form.Control.Feedback type="invalid" data-valid={isPayer}>
                 결제자를 선택해 주셔야 합니다.
               </Form.Control.Feedback>
             </StyledFormGroup>
-          </Col>
+          </StyledCol>
         </Row>
         <Row>
-          <Col xs={12} className="d-grid gap-2">
+          <StyledCol xs={12} className="d-grid gap-2">
             <StyledSubmitButton>추가하기</StyledSubmitButton>
-          </Col>
+          </StyledCol>
         </Row>
-      </Form>
+      </StyledForm>
     </StyledWrapper>
   );
 }
 const StyledWrapper = styled.div`
-  padding: 50px;
+  padding: 30px;
   background-color: #683ba1;
   box-shadow: 3px 0px 4px rgba(0, 0, 0, 0.25);
   border-radius: 15px;
 `;
-
+const StyledForm = styled(Form)`
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+`;
+const StyledCol = styled(Col)`
+  justify-content: center;
+`;
 const StyledFormGroup = styled(Form.Group)`
   margin-bottom: 15px;
   input,
@@ -182,11 +185,11 @@ const StyledFormGroup = styled(Form.Group)`
   }
 `;
 
-const StlyedTitle = styled.h3`
+export const StlyedTitle = styled.h3`
   color: #fffbfb;
   text-align: center;
   font-weight: 700;
-  font-size: 40px;
+  font-size: 30px;
   line-height: 48px;
   margin-bottom: 15px;
 `;
