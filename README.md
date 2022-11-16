@@ -1,70 +1,32 @@
-# Getting Started with Create React App
+# 💵 Happy Pay😆(DEMO) <br/><img src="https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=React&logoColor=black"/><img src="https://img.shields.io/badge/Bootstrapap-7952B3?style=flat-square&logo=bootstrap&logoColor=white"/><img src="https://img.shields.io/badge/styled components-DB7093?style=flat-square&logo=styled-components&logoColor=white"/><img src="https://img.shields.io/badge/recoil-0075EB?style=for-the-badge&logo=recoil&logoColor=white"><img src="https://img.shields.io/badge/jest-C21325?style=for-the-badge&logo=jest&logoColor=white"><img src="https://img.shields.io/badge/Amazon AWS amplify-FF9900?style=flat-square&logo=AWS amplify&logoColor=white"/>
+### 여행이나 식사모임, 술자리 이후 지출 정산에 대한 복잡함을 한번에 해결할 솔루션!
+#### 🔗 DEMO사이트 방문([Click!](https://main.d241p40u8jvfq3.amplifyapp.com/))
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<br/>
+<br/>
+<br/>
 
-## Available Scripts
+## 📍 핵심 기능
+#### 📌 모임 참여자들을 Grouping 해줍니다.
+#### 📌 각자의 지출내역을 기록합니다.
+#### 📌 전체적인 지출내역을 보여줍니다.
+#### 📌 자동으로 각자 누구에게 돈을 줘야할지 정산해줍니다. 
+#### 📌 공유가 편리하도록 이미지로 정산 결과를 다운로드 할 수 있습니다.
 
-In the project directory, you can run:
 
-### `npm start`
+<br/>
+<br/>
+<br/>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 📍 How to use
+> ### #️⃣STEP 1. 그룹 이름 정하고 멤버 추가
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+![grouping](https://user-images.githubusercontent.com/104561398/202110967-a9e4495a-73b2-4a35-816c-b20217e51d4d.png) &nbsp;&nbsp;
+![membering](https://user-images.githubusercontent.com/104561398/202111709-122948b9-0585-44bd-80f9-9ef905e02285.png)
 
-### `npm test`
+> ### #️⃣STEP 2. 지출 내역 입력 및 확인
+![inputexpense](https://user-images.githubusercontent.com/104561398/202113977-f1ecf02a-9cb7-465d-92ab-26b3aa06f66f.png) &nbsp;&nbsp;
+![expense](https://user-images.githubusercontent.com/104561398/202114612-8b4d77b3-0459-441b-a919-94fe82421f22.png)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+> ### #️⃣STEP 3. 정산 결과 확인 및 이미지 출력
+![settlement](https://user-images.githubusercontent.com/104561398/202115041-86c73dd3-d777-49df-9bd7-9a584a4903ac.png)
