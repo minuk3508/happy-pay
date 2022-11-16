@@ -18,6 +18,19 @@
 <br/>
 <br/>
 
+## 📍 핵심 소스 코드 링크
+### 📌 자동 정산 함수 코드
+https://github.com/minuk3508/happy-pay/blob/be93667adbda149b26fb8beae31a5bd83c96a53f/src/Components/SettlementSummery.jsx#L11
+
+### 📌 페이지 별 테스트 코드
+https://github.com/minuk3508/happy-pay/blob/be93667adbda149b26fb8beae31a5bd83c96a53f/src/Components/CreateGroup.spec.jsx#L1
+https://github.com/minuk3508/happy-pay/blob/be93667adbda149b26fb8beae31a5bd83c96a53f/src/Components/AddMembers.spec.jsx#L1
+https://github.com/minuk3508/happy-pay/blob/be93667adbda149b26fb8beae31a5bd83c96a53f/src/Components/ExpenseMain.spec.jsx#L1
+
+<br/>
+<br/>
+<br/>
+
 ## 📍 How to use
 > ### #️⃣STEP 1. 그룹 이름 정하고 멤버 추가
 
