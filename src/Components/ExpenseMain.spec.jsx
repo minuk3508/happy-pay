@@ -126,6 +126,24 @@ describe("비용 정산 메인페이지", () => {
         expect(amountValue).toBeInTheDocument();
         expect(payerValue).toBeInTheDocument();
       });
+
+      test("정산 결과 또한 업데이트 된다", async () => {
+        await addNewExpense();
+
+        const totalText = screen.getByText(/2명 - 총 30000 원 지출/i);
+        const transactionText = screen.getByText(/영희가 영수에게 15000원/i);
+
+        expect(totalText).toBeInTheDocument();
+        expect(transactionText).toBeInTheDocument();
+      });
+    });
+  });
+  describe("비용 정산결과 컴포넌트", () => {
+    test("정산 결과 컴포넌트가 렌더링 되는가", () => {
+      renderComponent();
+
+      const component = screen.getByText(/정산은 이렇게/i);
+      expect(component).toBeInTheDocument();
     });
   });
 });

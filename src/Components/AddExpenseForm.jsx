@@ -133,7 +133,10 @@ export default function AddExpenseForm() {
                     {i}
                   </option>
                 ))}
-                <option>영수</option>
+                <option>A</option>
+                <option>B</option>
+                <option>C</option>
+                <option>D</option>
               </Form.Select>
               <Form.Control.Feedback type="invalid" data-valid={isPayer}>
                 결제자를 선택해 주셔야 합니다.

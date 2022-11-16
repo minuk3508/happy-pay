@@ -4,6 +4,8 @@ import styled from "styled-components";
 import { groupNameState } from "../State/groupName";
 import AddExpenseForm from "./AddExpenseForm";
 import ExpenseTable from "./ExpenseTable";
+import SettlementSummery from "./SettlementSummery";
+import LogoForm from "./Shared/LogoForm";
 
 export default function ExpenseMain() {
   return (
@@ -23,7 +25,15 @@ export default function ExpenseMain() {
 const LeftPane = () => {
   return (
     <Container>
-      <AddExpenseForm />
+      <Row>
+        <LogoForm />
+      </Row>
+      <Row>
+        <AddExpenseForm />
+      </Row>
+      <Row>
+        <SettlementSummery />
+      </Row>
     </Container>
   );
 };

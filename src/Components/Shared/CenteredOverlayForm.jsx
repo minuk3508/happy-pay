@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { Container, Form, Row, Button } from "react-bootstrap";
 import OverlayWrapper from "./OverlayWrapper";
+import LogoForm from "./LogoForm";
 
 export default function CenteredOverlayForm({
   title,
@@ -10,7 +11,7 @@ export default function CenteredOverlayForm({
 }) {
   return (
     <CentralizedContainer>
-      <StyledLogo>Happy Pay😆</StyledLogo>
+      <LogoForm />
       <OverlayWrapper>
         <Container>
           <Form noValidate validated={validated} onSubmit={handleSubmit}>
@@ -29,10 +30,7 @@ export default function CenteredOverlayForm({
     </CentralizedContainer>
   );
 }
-const StyledLogo = styled.h1`
-  font-weight: 200;
-  letter-spacing: 10px;
-`;
+
 const CentralizedContainer = styled(Container)`
   display: flex;
   flex-direction: column;
